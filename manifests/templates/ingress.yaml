@@ -1,0 +1,21 @@
+---
+# Source: helm for kubernetes/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: recipe-nextjs                  # Ingress name
+  labels:
+    app: recipe-nextjs
+spec:
+  ingressClassName: nginx   # Optional ingressClass
+  rules:
+    - host: "recipe-nextjs.smartops.space"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: recipe-nextjs               # Links to Service name dynamically
+                port:
+                  number: 3000  # Links to service port dynamically
