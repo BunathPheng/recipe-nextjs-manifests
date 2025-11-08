@@ -1,0 +1,24 @@
+---
+# Source: helm for kubernetes/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipe-nextjs
+  labels:
+    app: recipe-nextjs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recipe-nextjs
+  template:
+    metadata:
+      labels:
+        app: recipe-nextjs
+    spec:
+      containers:
+        - name: recipe-nextjs
+          image: docker.io/phengbunath/recipe-nextjs:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
